@@ -1,0 +1,214 @@
++ srun --version
+slurm 20.11.9
++ cd /ocean/projects/asc200010p/jjia1/Developer/nccl-tests/build
++ export LD_LIBRARY_PATH=/ocean/projects/asc200010p/jjia1/Developer/nccl/build/lib:/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/lib:/opt/packages/cuda/v11.7.1/lib64:/opt/packages/cuda/v11.7.1/nvvm/lib64:/opt/packages/cuda/v11.7.1/extras/CUPTI/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib
++ LD_LIBRARY_PATH=/ocean/projects/asc200010p/jjia1/Developer/nccl/build/lib:/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/lib:/opt/packages/cuda/v11.7.1/lib64:/opt/packages/cuda/v11.7.1/nvvm/lib64:/opt/packages/cuda/v11.7.1/extras/CUPTI/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib
++ echo /ocean/projects/asc200010p/jjia1/Developer/nccl/build/lib:/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/lib:/opt/packages/cuda/v11.7.1/lib64:/opt/packages/cuda/v11.7.1/nvvm/lib64:/opt/packages/cuda/v11.7.1/extras/CUPTI/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib
+/ocean/projects/asc200010p/jjia1/Developer/nccl/build/lib:/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/lib:/opt/packages/cuda/v11.7.1/lib64:/opt/packages/cuda/v11.7.1/nvvm/lib64:/opt/packages/cuda/v11.7.1/extras/CUPTI/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib
++ nvidia-smi
+Fri Oct  6 04:07:35 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.60.13    Driver Version: 525.60.13    CUDA Version: 12.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  Tesla V100-SXM2...  On   | 00000000:15:00.0 Off |                    0 |
+| N/A   32C    P0    39W / 300W |      0MiB / 16384MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   1  Tesla V100-SXM2...  On   | 00000000:16:00.0 Off |                    0 |
+| N/A   32C    P0    37W / 300W |      0MiB / 16384MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   2  Tesla V100-SXM2...  On   | 00000000:3A:00.0 Off |                    0 |
+| N/A   29C    P0    38W / 300W |      0MiB / 16384MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   3  Tesla V100-SXM2...  On   | 00000000:3B:00.0 Off |                    0 |
+| N/A   33C    P0    38W / 300W |      0MiB / 16384MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   4  Tesla V100-SXM2...  On   | 00000000:89:00.0 Off |                    0 |
+| N/A   30C    P0    39W / 300W |      0MiB / 16384MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   5  Tesla V100-SXM2...  On   | 00000000:8A:00.0 Off |                    0 |
+| N/A   32C    P0    39W / 300W |      0MiB / 16384MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   6  Tesla V100-SXM2...  On   | 00000000:B2:00.0 Off |                    0 |
+| N/A   31C    P0    39W / 300W |      0MiB / 16384MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+|   7  Tesla V100-SXM2...  On   | 00000000:B3:00.0 Off |                    0 |
+| N/A   33C    P0    38W / 300W |      0MiB / 16384MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+++ scontrol show hostnames
+++ sort
+++ uniq
++ HOSTNAMES='v028
+v030'
++ HOSTLIST=
++ for HOST in $HOSTNAMES
++ HOSTLIST=v028,
++ for HOST in $HOSTNAMES
++ HOSTLIST=v028,v030,
++ HOSTLIST=v028,v030
++ env
+CONDA_SHLVL=1
+LD_LIBRARY_PATH=/ocean/projects/asc200010p/jjia1/Developer/nccl/build/lib:/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/lib:/opt/packages/cuda/v11.7.1/lib64:/opt/packages/cuda/v11.7.1/nvvm/lib64:/opt/packages/cuda/v11.7.1/extras/CUPTI/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib
+CONDA_EXE=/ocean/projects/asc200010p/jjia1/TOOLS/mambaforge/bin/conda
+SLURM_NODEID=0
+SLURM_TASK_PID=84795
+__LMOD_REF_COUNT_PATH=/opt/packages/psc.allocations.user/bin:1;/opt/packages/allocations/bin:1;/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/bin:1;/opt/packages/cuda/v11.7.1/bin:1;/opt/packages/cuda/v11.7.1/libnvvp:1;/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/bin:1;/ocean/projects/asc200010p/jjia1/TOOLS/mambaforge/bin:1;/ocean/projects/asc200010p/jjia1/TOOLS/mambaforge/condabin:1;/jet/home/jjia1/.local/bin:1;/jet/home/jjia1/bin:1;/usr/local/bin:1;/usr/bin:1;/usr/local/sbin:1;/usr/sbin:1;/opt/packages/interact/bin:1;/opt/puppetlabs/bin:1
+_ModuleTable002_=bHVhIixbImZ1bGxOYW1lIl09ImN1ZGEvMTEuNy4xIixbImxvYWRPcmRlciJdPTIscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iY3VkYSIsfSxnY2M9e1siZm4iXT0iL29wdC9tb2R1bGVmaWxlcy9wcm9kdWN0aW9uL2djYy8xMC4yLjAubHVhIixbImZ1bGxOYW1lIl09ImdjYy8xMC4yLjAiLFsibG9hZE9yZGVyIl09MSxwcm9wVD17fSxbInN0YWNrRGVwdGgiXT0wLFsic3RhdHVzIl09ImFjdGl2ZSIsWyJ1c2VyTmFtZSJdPSJnY2MiLH0sb3Blbm1waT17WyJmbiJdPSIvb3B0L21vZHVsZWZpbGVzL3Byb2R1Y3Rpb24vb3Blbm1waS80LjAuNS1nY2MxMC4yLjAubHVhIixbImZ1bGxOYW1lIl09Im9wZW5tcGkvNC4wLjUt
+INCLUDE=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/include:/opt/packages/cuda/v11.7.1/include:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/include
+SLURM_PRIO_PROCESS=0
+__LMOD_REF_COUNT_C_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/include:1;/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/include:1
+LMOD_FAMILY_MPI_VERSION=4.0.5-gcc10.2.0
+SLURM_SUBMIT_DIR=/ocean/projects/asc200010p/jjia1/scripts/bash_scripts/nccl
+HISTCONTROL=ignoredups
+LMOD_FAMILY_COMPILER_VERSION=10.2.0
+HOSTNAME=v028
+OLDPWD=/ocean/projects/asc200010p/jjia1/scripts/bash_scripts/nccl
+__LMOD_REF_COUNT__LMFILES_=/opt/modulefiles/production/gcc/10.2.0.lua:1;/opt/modulefiles/production/cuda/11.7.1.lua:1;/opt/modulefiles/production/openmpi/4.0.5-gcc10.2.0.lua:1;/opt/modulefiles/production/allocations/1.0.lua:1;/opt/modulefiles/production/psc.allocations.user/1.0.lua:1
+C_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/include:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/include
+ENVIRONMENT=BATCH
+CUDA_PATH=/opt/packages/cuda/v11.7.1
+ROCR_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+__LMOD_REF_COUNT_CPLUS_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/include:1;/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/include:1
+CONDA_PREFIX=/ocean/projects/asc200010p/jjia1/TOOLS/mambaforge
+SLURM_PROCID=0
+SLURM_JOB_GID=24304
+__LMOD_REF_COUNT_INCLUDE=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/include:1;/opt/packages/cuda/v11.7.1/include:1;/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/include:1
+__LMOD_REF_COUNT_LD_LIBRARY_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/lib:1;/opt/packages/cuda/v11.7.1/lib64:1;/opt/packages/cuda/v11.7.1/nvvm/lib64:1;/opt/packages/cuda/v11.7.1/extras/CUPTI/lib64:1;/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib64:1;/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib:1
+__LMOD_REF_COUNT_PKG_CONFIG_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/lib/pkgconfig:1;/opt/packages/cuda/v11.7.1/lib64/pkgconfig:1
+SLURMD_NODENAME=v028
+_ModuleTable004_=IiwiL29wdC9tb2R1bGVmaWxlcy9wcmVwcm9kdWN0aW9uIiwiL29wdC9tb2R1bGVmaWxlcy9kZXByZWNhdGVkIiwiL3Vzci9zaGFyZS9tb2R1bGVmaWxlcyIsIi91c3Ivc2hhcmUvbW9kdWxlZmlsZXMvTGludXgiLCIvdXNyL3NoYXJlL21vZHVsZWZpbGVzL0NvcmUiLCIvdXNyL3NoYXJlL2xtb2QvbG1vZC9tb2R1bGVmaWxlcy9Db3JlIix9LFsic3lzdGVtQmFzZU1QQVRIIl09Ii9vcHQvbW9kdWxlZmlsZXMvcHJvZHVjdGlvbjovb3B0L21vZHVsZWZpbGVzL3ByZXByb2R1Y3Rpb246L29wdC9tb2R1bGVmaWxlcy9kZXByZWNhdGVkOi91c3Ivc2hhcmUvbW9kdWxlZmlsZXM6L3Vzci9zaGFyZS9tb2R1bGVmaWxlcy9MaW51eDovdXNyL3NoYXJlL21vZHVsZWZpbGVzL0NvcmU6L3Vz
+LOCAL=/local
+SLURM_TASKS_PER_NODE=40(x2)
+_CE_M=
+CC=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/bin/gcc
+MPIF90=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/bin/mpif90
+SLURM_NNODES=2
+USER=jjia1
+SLURM_GET_USER_ENV=1
+MPICXX=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/bin/mpic++
+__LMOD_REF_COUNT_MODULEPATH=/opt/modulefiles/production:1;/opt/modulefiles/preproduction:1;/opt/modulefiles/deprecated:1;/usr/share/modulefiles:1;/usr/share/modulefiles/Linux:1;/usr/share/modulefiles/Core:1;/usr/share/lmod/lmod/modulefiles/Core:1
+__LMOD_REF_COUNT_LOADEDMODULES=gcc/10.2.0:1;cuda/11.7.1:1;openmpi/4.0.5-gcc10.2.0:1;allocations/1.0:1;psc.allocations.user/1.0:1
+SLURM_GPUS=v100-16:16
+PWD=/ocean/projects/asc200010p/jjia1/Developer/nccl-tests/build
+RAMDISK=/dev/shm
+SLURM_JOB_NODELIST=v[028,030]
+HOME=/jet/home/jjia1
+SLURM_CLUSTER_NAME=bridges2
+CONDA_PYTHON_EXE=/ocean/projects/asc200010p/jjia1/TOOLS/mambaforge/bin/python
+CMAKE_PREFIX_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv
+SLURM_NODELIST=v[028,030]
+LMOD_VERSION=8.2.7
+CUDA_HOME=/opt/packages/cuda/v11.7.1
+CPATH=/opt/packages/cuda/v11.7.1/include
+F77=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/bin/gfortran
+SLURM_JOB_CPUS_PER_NODE=40(x2)
+BASH_ENV=/usr/share/lmod/lmod/init/bash
+LMOD_MPI_VERSION=4.0.5-i77nnmg
+SLURM_TOPOLOGY_ADDR=v028
+PROJECT=/ocean/projects/asc200010p/jjia1
+_CE_CONDA=
+SLURM_WORKING_CLUSTER=bridges2:br003:6814:9216:109
+__LMOD_REF_COUNT_LIBRARY_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/lib:1;/opt/packages/cuda/v11.7.1/lib64:1;/opt/packages/cuda/v11.7.1/nvvm/lib64:1;/opt/packages/cuda/v11.7.1/extras/CUPTI/lib64:1;/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib64:1;/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib:1
+SALLOC_ACCOUNT=asc200010p
+SLURM_JOB_NAME=nccl-test
+TMPDIR=/tmp
+LIBRARY_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/lib:/opt/packages/cuda/v11.7.1/lib64:/opt/packages/cuda/v11.7.1/nvvm/lib64:/opt/packages/cuda/v11.7.1/extras/CUPTI/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib64:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/lib
+SLURM_JOB_GPUS=0,1,2,3,4,5,6,7
+__LMOD_REF_COUNT_CMAKE_PREFIX_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c:1;/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv:1
+LMOD_sys=Linux
+SLURM_JOBID=19630435
+_ModuleTable001_=X01vZHVsZVRhYmxlXz17WyJNVHZlcnNpb24iXT0zLFsiY19yZWJ1aWxkVGltZSJdPWZhbHNlLFsiY19zaG9ydFRpbWUiXT1mYWxzZSxkZXB0aFQ9e30sZmFtaWx5PXtbImNvbXBpbGVyIl09ImdjYyIsWyJtcGkiXT0ib3Blbm1waSIsfSxtVD17YWxsb2NhdGlvbnM9e1siZm4iXT0iL29wdC9tb2R1bGVmaWxlcy9wcm9kdWN0aW9uL2FsbG9jYXRpb25zLzEuMC5sdWEiLFsiZnVsbE5hbWUiXT0iYWxsb2NhdGlvbnMvMS4wIixbImxvYWRPcmRlciJdPTQscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0iYWxsb2NhdGlvbnMiLH0sY3VkYT17WyJmbiJdPSIvb3B0L21vZHVsZWZpbGVzL3Byb2R1Y3Rpb24vY3VkYS8xMS43LjEu
+SLURM_CONF=/var/spool/slurm/d/conf-cache/slurm.conf
+LOADEDMODULES=gcc/10.2.0:cuda/11.7.1:openmpi/4.0.5-gcc10.2.0:allocations/1.0:psc.allocations.user/1.0
+FC=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/bin/gfortran
+__LMOD_REF_COUNT_MANPATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/share/man:1;/opt/packages/cuda/v11.7.1/gds/man:1;/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/share/man:1;/usr/share/lmod/lmod/share/man:1;/opt/puppetlabs/puppet/share/man:1
+_ModuleTable003_=Z2NjMTAuMi4wIixbImxvYWRPcmRlciJdPTMscHJvcFQ9e30sWyJzdGFja0RlcHRoIl09MCxbInN0YXR1cyJdPSJhY3RpdmUiLFsidXNlck5hbWUiXT0ib3Blbm1waS80LjAuNS1nY2MxMC4yLjAiLH0sWyJwc2MuYWxsb2NhdGlvbnMudXNlciJdPXtbImZuIl09Ii9vcHQvbW9kdWxlZmlsZXMvcHJvZHVjdGlvbi9wc2MuYWxsb2NhdGlvbnMudXNlci8xLjAubHVhIixbImZ1bGxOYW1lIl09InBzYy5hbGxvY2F0aW9ucy51c2VyLzEuMCIsWyJsb2FkT3JkZXIiXT01LHByb3BUPXt9LFsic3RhY2tEZXB0aCJdPTAsWyJzdGF0dXMiXT0iYWN0aXZlIixbInVzZXJOYW1lIl09InBzYy5hbGxvY2F0aW9ucy51c2VyIix9LH0sbXBhdGhBPXsiL29wdC9tb2R1bGVmaWxlcy9wcm9kdWN0aW9u
+SLURM_NODE_ALIASES=(null)
+MPICC=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/bin/mpicc
+SLURM_JOB_QOS=gpu
+LMOD_ROOT=/usr/share/lmod
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+CONDA_PROMPT_MODIFIER=(base) 
+SUDO_PROMPT=Password for %u@psc.edu: 
+MAIL=/var/spool/mail/jjia1
+SLURM_CPUS_ON_NODE=40
+CXX=/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/bin/g++
+SLURM_JOB_NUM_NODES=2
+SHELL=/bin/bash
+SLURM_JOB_UID=89014
+_ModuleTable_Sz_=5
+__LMOD_REF_COUNT_CPATH=/opt/packages/cuda/v11.7.1/include:1
+SLURM_JOB_PARTITION=GPU
+LMOD_FAMILY_COMPILER=gcc
+TMOUT=1800
+SLURM_JOB_USER=jjia1
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+SHLVL=2
+SLURM_SUBMIT_HOST=br014.ib.bridges2.psc.edu
+MPIF77=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/bin/mpif77
+SLURM_JOB_ACCOUNT=asc200010p
+MANPATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/share/man:/opt/packages/cuda/v11.7.1/gds/man:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/share/man:/usr/share/lmod/lmod/share/man::/opt/puppetlabs/puppet/share/man
+SLURM_EXPORT_ENV=ALL
+MODULEPATH=/opt/modulefiles/production:/opt/modulefiles/preproduction:/opt/modulefiles/deprecated:/usr/share/modulefiles:/usr/share/modulefiles/Linux:/usr/share/modulefiles/Core:/usr/share/lmod/lmod/modulefiles/Core
+SLURM_GTIDS=0
+LOGNAME=jjia1
+CPLUS_INCLUDE_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/include:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/include
+MODULEPATH_ROOT=/usr/share/modulefiles
+LMOD_MPI_NAME=openmpi
+PATH=/jet/home/jjia1/.local/bin:/jet/home/jjia1/bin:/opt/packages/psc.allocations.user/bin:/opt/packages/allocations/bin:/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/bin:/opt/packages/cuda/v11.7.1/bin:/opt/packages/cuda/v11.7.1/libnvvp:/jet/packages/spack/opt/spack/linux-centos8-zen/gcc-8.3.1/gcc-10.2.0-tfzxq7udz2a53dmujvasy4uz33t27iwv/bin:/ocean/projects/asc200010p/jjia1/TOOLS/mambaforge/bin:/ocean/projects/asc200010p/jjia1/TOOLS/mambaforge/condabin:/jet/home/jjia1/.local/bin:/jet/home/jjia1/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/packages/interact/bin:/opt/puppetlabs/bin
+SLURM_JOB_ID=19630435
+_LMFILES_=/opt/modulefiles/production/gcc/10.2.0.lua:/opt/modulefiles/production/cuda/11.7.1.lua:/opt/modulefiles/production/openmpi/4.0.5-gcc10.2.0.lua:/opt/modulefiles/production/allocations/1.0.lua:/opt/modulefiles/production/psc.allocations.user/1.0.lua
+MODULESHOME=/usr/share/lmod/lmod
+PKG_CONFIG_PATH=/jet/packages/spack/opt/spack/linux-centos8-zen2/gcc-10.2.0/openmpi-4.0.5-i77nnmggpclrp6x53f7e5vpc4afn5p5c/lib/pkgconfig:/opt/packages/cuda/v11.7.1/lib64/pkgconfig
+LMOD_SETTARG_FULL_SUPPORT=no
+CONDA_DEFAULT_ENV=base
+HISTSIZE=1000
+LMOD_PKG=/usr/share/lmod/lmod
+SBATCH_EXPORT=NONE
+XML_CATALOG_FILES=file:///ocean/projects/asc200010p/jjia1/TOOLS/mambaforge/etc/xml/catalog file:///etc/xml/catalog
+_ModuleTable005_=ci9zaGFyZS9sbW9kL2xtb2QvbW9kdWxlZmlsZXMvQ29yZSIsfQ==
+LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
+SLURM_LOCALID=0
+SLURM_WHOLE=1
+GPU_DEVICE_ORDINAL=0,1,2,3,4,5,6,7
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LMOD_DIR=/usr/share/lmod/lmod/libexec/
+LMOD_FAMILY_MPI=openmpi
+BASH_FUNC_module%%=() {  eval `$LMOD_CMD sh "$@"`
+}
+BASH_FUNC_ml%%=() {  eval $($LMOD_DIR/ml_cmd "$@")
+}
+_=/usr/bin/env
++ mpirun --version
+mpirun (Open MPI) 4.0.5
+
+Report bugs to http://www.open-mpi.org/community/help/
++ mpirun -H v028,v030 echo Hello
+--------------------------------------------------------------------------
+An ORTE daemon has unexpectedly failed after launch and before
+communicating back to mpirun. This could be caused by a number
+of factors, including an inability to create a connection back
+to mpirun due to a lack of common network interfaces and/or no
+route found between them. Please check network connectivity
+(including firewalls and network routing requirements).
+--------------------------------------------------------------------------
+slurmstepd: error: *** JOB 19630435 ON v028 CANCELLED AT 2023-10-06T04:12:14 DUE TO TIME LIMIT ***
